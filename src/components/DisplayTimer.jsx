@@ -1,8 +1,10 @@
 import { useState } from "react";
 
-const DisplayTimer = ({timeLeft, onTimeChange}) => {
+const DisplayTimer = ({timeLeft, onTimeChange, onBreakChange, breakDuration}) => {
     const [isEditing, setIsEditing] = useState(false);
     const [inputMinutes, setInputMinutes] = useState("");
+    const [isEditingBreak, setIsEditingBreak]= useState(false);
+    const [inputBreakMinutes, setInputBreakMinutes] = useState ("");
     
     const formatTime = (seconds) => {
         const minutes = Math.floor(seconds / 60);
@@ -17,10 +19,19 @@ const DisplayTimer = ({timeLeft, onTimeChange}) => {
         setInputMinutes("");
         setIsEditing(false);
     };
+
+    const changeBreakTime = () => {
+        if (inputBreakMinutes > 0){
+            onBreakChange(parseInt(inputMinutes, 10) * 60);
+        }
+        setInputBreakMinutes("");
+        setIsEditingBreak(false);
+
+    }
     
     return(
         <div>
-            <h1 onClick={() => setIsEditing(true)} style={{ cursor: "pointer" }}>
+          <h1 onClick={() => setIsEditing(true)} style={{ cursor: "pointer" }}>
           {isEditing ? (
             <input
               type="number"
@@ -36,8 +47,25 @@ const DisplayTimer = ({timeLeft, onTimeChange}) => {
             formatTime(timeLeft) 
           )}
         </h1>
-        </div>
-    )
-}
+
+        <h2 onClick={() => setIsEditingBreak(true)} style={{cursor: "pointer"}}>
+          {isEditingBreak ? (
+            <input
+              type="number"
+              value={inputBreakMinutes}
+              onChange={(e) => setInputBreakMinutes(e.target.value)}
+              onBlur = {changeBreakTime}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") changeBreakTime();
+              }}
+              autoFocus
+            />
+            ) :(
+              `Break: ${breakDuration / 60} min `
+            )}
+        </h2>
+      </div>
+    );
+};
 
 export default DisplayTimer;

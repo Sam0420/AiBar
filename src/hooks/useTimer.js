@@ -4,7 +4,8 @@ const useTimer = (initialTime = 1500, breakTime = 300) => {
     const [timeLeft, setTimeLeft] = useState(initialTime);
     const [isRunning, setIsRunning] = useState(false);
     const [isBreak, setIsBreak] = useState(false);
-    const [workTime, setWorkTime] = useState (initialTime)
+    const [workTime, setWorkTime] = useState (initialTime);
+    const [breakDuration, setBreakDuration] = useState(breakTime);
     
     useEffect(() => {
             if (isRunning && timeLeft > 0) {
@@ -14,15 +15,15 @@ const useTimer = (initialTime = 1500, breakTime = 300) => {
                 return () => clearTimeout(timer);
             } else if (timeLeft === 0) {
                 if (!isBreak) {
-                    setTimeLeft(breakTime); // Switch to 5-minute break
+                    setTimeLeft(breakDuration); // Switch to 5-minute break
                     setIsBreak(true);
                 } else {
-                    setTimeLeft(initialTime); // Switch to 25-minute work session
+                    setTimeLeft(workTime); // Switch to 25-minute work session
                     setIsBreak(false);
                 }
                 setIsRunning(false);
             }
-        }, [isRunning, isBreak, timeLeft, initialTime, breakTime]);
+        }, [isRunning, isBreak, timeLeft, initialTime, breakDuration]);
     
         const resetTimer = (newWorkTime) => {
             if (newWorkTime !== undefined) {
@@ -41,7 +42,9 @@ const useTimer = (initialTime = 1500, breakTime = 300) => {
             isBreak,
             setTimeLeft,
             setIsRunning,
-            resetTimer
+            resetTimer,
+            breakDuration,
+            setBreakDuration
           };
         };
         

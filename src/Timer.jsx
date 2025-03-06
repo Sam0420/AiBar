@@ -11,6 +11,8 @@ const Timer = ()  => {
         setTimeLeft,
         setIsRunning,
         resetTimer,
+        breakDuration,
+        setBreakDuration
       } = useTimer();
 
       const handleTimeChange = (newTime) => {
@@ -19,11 +21,17 @@ const Timer = ()  => {
         resetTimer(newTime);
       };
 
+      const handleBreakChange = (newBreakTime) => {
+        if (newBreakTime > 0){
+          setBreakDuration (newBreakTime * 60);
+        }
+      }
+
     return(
     <div className="tc">
       <h1>AiBar</h1>
       <h2>{isBreak ? "Break Time! 🎉" : "Work Time! 💪"}</h2>
-      <DisplayTimer timeLeft={timeLeft} onTimeChange={handleTimeChange} />
+      <DisplayTimer timeLeft={timeLeft} onTimeChange={handleTimeChange} breakDuration={breakDuration} onBreakChange={handleBreakChange} />
       <button onClick={() => setIsRunning(prev => !prev)}>
         {isRunning ? "Pause" : "Start"}
       </button>
