@@ -1,71 +1,41 @@
-import { useState } from "react";
+import React from "react";
 
-const DisplayTimer = ({timeLeft, onTimeChange, onBreakChange, breakDuration}) => {
-    const [isEditing, setIsEditing] = useState(false);
-    const [inputMinutes, setInputMinutes] = useState("");
-    const [isEditingBreak, setIsEditingBreak]= useState(false);
-    const [inputBreakMinutes, setInputBreakMinutes] = useState ("");
-    
-    const formatTime = (seconds) => {
-        const minutes = Math.floor(seconds / 60);
-        const secs = seconds % 60;
-        return `${minutes}:${secs.toString().padStart(2, '0')}`;
-    };
+const TimerDisplay = ({ timeLeft, isRunning, toggleRunning, resetTimer, workDuration }) => {
+  // Format mm:ss
+  const formatTime = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${minutes}:${secs.toString().padStart(2, '0')}`;
+  };
 
-    const changeTime = () => {
-        if (inputMinutes > 0){
-            onTimeChange(parseInt(inputMinutes, 10) * 60);
-        }
-        setInputMinutes("");
-        setIsEditing(false);
-    };
+  // Calculate progress
+  const progress = Math.round(((workDuration - timeLeft) / workDuration) * 100);
 
-    const changeBreakTime = () => {
-        if (inputBreakMinutes > 0){
-            onBreakChange(parseInt(inputMinutes, 10) * 60);
-        }
-        setInputBreakMinutes("");
-        setIsEditingBreak(false);
-
-    }
-    
-    return(
-        <div>
-          <h1 onClick={() => setIsEditing(true)} style={{ cursor: "pointer" }}>
-          {isEditing ? (
-            <input
-              type="number"
-              value={inputMinutes}
-              onChange={(e) => setInputMinutes(e.target.value)}
-              onBlur={changeTime}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") changeTime();    
-              }}
-              autoFocus
-            />
-          ) : (
-            formatTime(timeLeft) 
-          )}
-        </h1>
-
-        <h2 onClick={() => setIsEditingBreak(true)} style={{cursor: "pointer"}}>
-          {isEditingBreak ? (
-            <input
-              type="number"
-              value={inputBreakMinutes}
-              onChange={(e) => setInputBreakMinutes(e.target.value)}
-              onBlur = {changeBreakTime}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") changeBreakTime();
-              }}
-              autoFocus
-            />
-            ) :(
-              `Break: ${breakDuration / 60} min `
-            )}
-        </h2>
+  return (
+    <div className="timer-display tc"> {/* "tc" for text-center */}
+      <div className="time-count f1 b mb3">
+        {formatTime(timeLeft)}
       </div>
-    );
+
+      {/* Progress bar container */}
+      <div className="progress-bar-container w-50 center bg-black-10 br-pill overflow-hidden mb3">
+        <div
+          className="progress-bar bg-blue h1"
+          style={{ width: `${progress}%` }}
+        />
+      </div>
+
+      {/* Control buttons */}
+      <div className="controls">
+        <button
+          className="pa2 mr2 br2 bg-green white b"
+          onClick={toggleRunning}
+        >
+          {isRunning ? "Pause" : "Start"}
+        </button>
+      </div>
+    </div>
+  );
 };
 
-export default DisplayTimer;
+export default TimerDisplay;

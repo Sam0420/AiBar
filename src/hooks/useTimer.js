@@ -23,7 +23,7 @@ const useTimer = (initialTime = 1500, breakTime = 300) => {
                 }
                 setIsRunning(false);
             }
-        }, [isRunning, isBreak, timeLeft, initialTime, breakDuration]);
+        }, [isRunning, isBreak, timeLeft, initialTime, breakDuration, workTime]);
     
         const resetTimer = (newWorkTime) => {
             if (newWorkTime !== undefined) {
@@ -44,7 +44,9 @@ const useTimer = (initialTime = 1500, breakTime = 300) => {
             setIsRunning,
             resetTimer,
             breakDuration,
-            setBreakDuration
+            setBreakDuration,
+            workTime,
+            setWorkTime
           };
         };
         
