@@ -9,21 +9,40 @@ const Timer = () => {
     timeLeft,
     isRunning,
     isBreak,
-    setTimeLeft,
     setIsRunning,
     resetTimer,
     breakDuration,
     setBreakDuration,
     workTime,
-    setWorkTime,
+    setWorkTime
   } = useTimer();
 
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
+  // Request notification permission on user gesture
+  const requestNotificationPermission = async () => {
+    if ("Notification" in window && Notification.permission !== "granted") {
+      try {
+        const permission = await Notification.requestPermission();
+        console.log("User responded with:", permission);
+      } catch (err) {
+        console.error("Permission request error:", err);
+      }
+    }
+  };
+
+  // "Unlock" audio in Safari AND request notification permission on Start
+  const handleStartClick = async () => {
+    await requestNotificationPermission();
+
+    const beep = new Audio('/startmp3.mp3');
+    beep.play().catch(err => console.error('Unlock beep failed:', err));
+
+    setIsRunning(true);
+  };
+
   // Update the work time
   const handleTimeChange = (newTime) => {
-    setTimeLeft(newTime * 60);
-    setWorkTime(newTime * 60);
     resetTimer(newTime * 60);
   };
 
@@ -32,10 +51,7 @@ const Timer = () => {
     setBreakDuration(newBreakTime * 60);
   };
 
-  // Toggle start/pause
-  const toggleRunning = () => setIsRunning((prev) => !prev);
-
-  // Dynamically pick a background color based on break/work
+  // Dynamically pick background color based on break/work
   const bgClass = isBreak ? "bg-washed-green" : "bg-washed-red";
 
   return (
@@ -50,9 +66,26 @@ const Timer = () => {
       <TimerDisplay
         timeLeft={timeLeft}
         isRunning={isRunning}
-        toggleRunning={toggleRunning}
         workDuration={workTime}
       />
+
+      {!isRunning && (
+        <button
+          className="pa2 br2 bg-light-blue white b"
+          onClick={handleStartClick}
+        >
+          Start
+        </button>
+      )}
+
+      {isRunning && (
+        <button
+          className="pa2 br2 bg-orange white b"
+          onClick={() => setIsRunning(false)}
+        >
+          Pause
+        </button>
+      )}
 
       <button
         className="pa2 br2 bg-light-blue white b mt3"

@@ -24,16 +24,6 @@ const TimerDisplay = ({ timeLeft, isRunning, toggleRunning, resetTimer, workDura
           style={{ width: `${progress}%` }}
         />
       </div>
-
-      {/* Control buttons */}
-      <div className="controls">
-        <button
-          className="pa2 mr2 br2 bg-green white b"
-          onClick={toggleRunning}
-        >
-          {isRunning ? "Pause" : "Start"}
-        </button>
-      </div>
     </div>
   );
 };
