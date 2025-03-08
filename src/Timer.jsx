@@ -10,11 +10,11 @@ const Timer = () => {
     isRunning,
     isBreak,
     setIsRunning,
-    resetTimer,
     breakDuration,
-    setBreakDuration,
     workTime,
-    setWorkTime
+    setWorkTime,
+    updateBreakTime,
+    updateWorkTime
   } = useTimer();
 
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
@@ -43,12 +43,12 @@ const Timer = () => {
 
   // Update the work time
   const handleTimeChange = (newTime) => {
-    resetTimer(newTime * 60);
+    updateWorkTime(newTime);
   };
 
   // Update the break duration
   const handleBreakChange = (newBreakTime) => {
-    setBreakDuration(newBreakTime * 60);
+    updateBreakTime(newBreakTime);
   };
 
   // Dynamically pick background color based on break/work

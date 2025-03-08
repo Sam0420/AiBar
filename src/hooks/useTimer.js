@@ -7,8 +7,6 @@ const useTimer = (initialTime = 1500, breakTime = 300) => {
   const [workTime, setWorkTime] = useState(initialTime);
   const [breakDuration, setBreakDuration] = useState(breakTime);
 
-
-
   useEffect(() => {
     if (isRunning && timeLeft > 0) {
       const timer = setTimeout(() => {
@@ -40,21 +38,39 @@ const useTimer = (initialTime = 1500, breakTime = 300) => {
         setTimeLeft(workTime);
         setIsBreak(false);
       }
-
-      // 4) Pause automatically
-      //setIsRunning(false);
     }
   }, [isRunning, timeLeft, isBreak, workTime, breakDuration]);
 
-  const resetTimer = (newWorkTime) => {
-    if (newWorkTime !== undefined) {
-      setWorkTime(newWorkTime);
-      setTimeLeft(newWorkTime);
-    } else {
-      setTimeLeft(workTime);
+
+  const updateBreakTime = (newBreakMins) => {
+    const newBreakSeconds = newBreakMins * 60;
+
+    if (isBreak) {
+      
+      const usedSoFar = breakDuration - timeLeft;
+      let newTimeLeft = newBreakSeconds - usedSoFar;
+      if (newTimeLeft < 0) {
+        newTimeLeft = 0; // can't go negative
+      }
+      setTimeLeft(newTimeLeft);
     }
-    setIsRunning(false);
-    setIsBreak(false);
+    
+    setBreakDuration(newBreakSeconds);
+  };
+  const updateWorkTime = (newWorkMins) => {
+    const newWorkSeconds = newWorkMins * 60;
+
+    if (!isBreak) {
+      
+      const usedSoFar = workTime - timeLeft;
+      let newTimeLeft = newWorkSeconds - usedSoFar;
+      if (newTimeLeft < 0) {
+        newTimeLeft = 0;
+      }
+      setTimeLeft(newTimeLeft);
+    }
+
+    setWorkTime(newWorkSeconds);
   };
 
   return {
@@ -63,11 +79,12 @@ const useTimer = (initialTime = 1500, breakTime = 300) => {
     isBreak,
     setTimeLeft,
     setIsRunning,
-    resetTimer,
     breakDuration,
     setBreakDuration,
     workTime,
-    setWorkTime
+    setWorkTime,
+    updateBreakTime,
+    updateWorkTime
   };
 };
 
