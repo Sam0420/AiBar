@@ -31,7 +31,6 @@ const Timer = () => {
     }
   };
 
-  // "Unlock" audio in Safari AND request notification permission on Start
   const handleStartClick = async () => {
     await requestNotificationPermission();
 

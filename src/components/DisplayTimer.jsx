@@ -1,6 +1,6 @@
 import React from "react";
 
-const TimerDisplay = ({ timeLeft, isRunning, toggleRunning, resetTimer, workDuration }) => {
+const TimerDisplay = ({ timeLeft, workDuration }) => {
   // Format mm:ss
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
