@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useTimer from "./hooks/useTimer";
 import TimerDisplay from "./components/DisplayTimer";
 import TimerSettings from "./components/TimerSetting";
@@ -40,6 +40,23 @@ const Timer = () => {
     setIsRunning(true);
   };
 
+  useEffect(() => {
+    const handleKeyPress = (event)=>{
+      if (event.code === "Space"){
+        event.preventDefault();
+       if(isRunning){
+        setIsRunning(false);
+      }else{
+        handleStartClick();
+      }
+    } 
+    };
+
+    window.addEventListener("keydown", handleKeyPress);
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);  
+    };
+  }, [isRunning]);
   // Update the work time
   const handleTimeChange = (newTime) => {
     updateWorkTime(newTime);
