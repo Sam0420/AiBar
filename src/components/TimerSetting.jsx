@@ -29,7 +29,7 @@ const TimerSettings = ({
             <input
               className="pa2 input-reset ba b--black-20 w-100"
               type="number"
-              value={workInput}
+              value={workInput === 0 ? "" : workInput}
               min="1"
               onChange={(e) => setWorkInput(Number(e.target.value))}
             />
@@ -40,7 +40,7 @@ const TimerSettings = ({
             <input
               className="pa2 input-reset ba b--black-20 w-100"
               type="number"
-              value={breakInput}
+              value={breakInput === 0 ? "" : workInput}
               min= "1"
               onChange={(e) => setBreakInput(Number(e.target.value))}
             />
