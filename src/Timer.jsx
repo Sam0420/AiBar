@@ -44,19 +44,22 @@ const Timer = () => {
     const handleKeyPress = (event)=>{
       if (event.code === "Space"){
         event.preventDefault();
-       if(isRunning){
-        setIsRunning(false);
-      }else{
-        handleStartClick();
-      }
+        setIsRunning((prev) => !prev);
     } 
     };
-
-    window.addEventListener("keydown", handleKeyPress);
-    return () => {
-      window.removeEventListener("keydown", handleKeyPress);  
+    const handleEscapePress = (event) => {
+      if (event.code === "Escape"){
+        event.preventDefault();
+        setIsSettingsOpen((prev) => !prev);
+      }
     };
-  }, [isRunning]);
+    window.addEventListener("keydown", handleKeyPress);
+    window.addEventListener("keydown", handleEscapePress);
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+      window.removeEventListener("keydown", handleEscapePress);  
+    };
+  }, []);
   // Update the work time
   const handleTimeChange = (newTime) => {
     updateWorkTime(newTime);
