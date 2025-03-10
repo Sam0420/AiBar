@@ -6,6 +6,8 @@ const useTimer = (initialTime = 1500, breakTime = 300) => {
   const [isBreak, setIsBreak] = useState(false);
   const [workTime, setWorkTime] = useState(initialTime);
   const [breakDuration, setBreakDuration] = useState(breakTime);
+  const [workColor, setWorkColor] = useState("#ffcccc");
+  const [breakColor, setBreakColor] = useState ("#ccffcc");
 
   useEffect(() => {
     if (isRunning && timeLeft > 0) {
@@ -84,7 +86,11 @@ const useTimer = (initialTime = 1500, breakTime = 300) => {
     workTime,
     setWorkTime,
     updateBreakTime,
-    updateWorkTime
+    updateWorkTime,
+    workColor,
+    setWorkColor,
+    breakColor,
+    setBreakColor
   };
 };
 

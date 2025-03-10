@@ -14,7 +14,11 @@ const Timer = () => {
     workTime,
     setWorkTime,
     updateBreakTime,
-    updateWorkTime
+    updateWorkTime,
+    workColor,
+    setWorkColor,
+    breakColor, 
+    setBreakColor
   } = useTimer();
 
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
@@ -45,19 +49,14 @@ const Timer = () => {
       if (event.code === "Space"){
         event.preventDefault();
         setIsRunning((prev) => !prev);
-    } 
-    };
-    const handleEscapePress = (event) => {
-      if (event.code === "Escape"){
+    } else if (event.code === "Escape"){
         event.preventDefault();
         setIsSettingsOpen((prev) => !prev);
       }
     };
     window.addEventListener("keydown", handleKeyPress);
-    window.addEventListener("keydown", handleEscapePress);
     return () => {
-      window.removeEventListener("keydown", handleKeyPress);
-      window.removeEventListener("keydown", handleEscapePress);  
+      window.removeEventListener("keydown", handleKeyPress); 
     };
   }, []);
   // Update the work time
@@ -71,12 +70,13 @@ const Timer = () => {
   };
 
   // Dynamically pick background color based on break/work
-  const bgClass = isBreak ? "bg-washed-green" : "bg-washed-red";
+  const backgroundColor = isBreak ? breakColor : workColor;
 
   return (
     <div
-      className={`min-vh-100 w-100 flex flex-column items-center justify-center ${bgClass}`}
-    >
+    style={{ backgroundColor }}
+    className="min-vh-100 w-100 flex flex-column items-center justify-center"
+  >
       <h1 className="f1 mb3">AiBar</h1>
       <h2 className="f3 mb3">
         {isBreak ? "Break Time! 🎉" : "Work Time! 💪"}
@@ -120,7 +120,12 @@ const Timer = () => {
           onClose={() => setIsSettingsOpen(false)}
           onTimeChange={handleTimeChange}
           onBreakChange={handleBreakChange}
+          workColor={workColor}
+          setBreakColor={setBreakColor}
+          setWorkColor={setWorkColor}
+          breakColor={breakColor}
         />
+
       )}
     </div>
   );

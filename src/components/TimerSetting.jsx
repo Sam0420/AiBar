@@ -6,14 +6,23 @@ const TimerSettings = ({
   onTimeChange,
   onBreakChange,
   onClose,
+  workColor, 
+  setWorkColor, 
+  breakColor,
+  setBreakColor
 }) => {
   const [workInput, setWorkInput] = useState(currentWorkTime);
   const [breakInput, setBreakInput] = useState(currentBreakTime);
+  const [workBgColor, setWorkBgColor] = useState(workColor);
+  const [breakBgColor, setBreakBgColor] = useState(breakColor);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (workInput > 0) onTimeChange(workInput);
     if (breakInput > 0) onBreakChange(breakInput);
+
+    setWorkColor(workBgColor); 
+    setBreakColor(breakBgColor);
     onClose();
   };
 
@@ -43,6 +52,26 @@ const TimerSettings = ({
               value={breakInput === 0 ? "" : breakInput}
               min= "1"
               onChange={(e) => setBreakInput(Number(e.target.value))}
+            />
+          </label>
+
+          <label className="mb3">
+            <span className="db mb1">Work Mode Background:</span>
+            <input
+              className="pa2 input-reset ba b--black-20 w-100"
+              type="color"
+              value={workBgColor}
+              onChange={(e) => setWorkBgColor(e.target.value)}
+            />
+          </label>
+
+          <label className="mb3">
+            <span className="db mb1">Break Mode Background:</span>
+            <input
+              className="pa2 input-reset ba b--black-20 w-100"
+              type="color"
+              value={breakBgColor}
+              onChange={(e) => setBreakBgColor(e.target.value)}
             />
           </label>
 
