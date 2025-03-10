@@ -30,10 +30,18 @@ const useTask = () => {
         setTasks (prevTasks => prevTasks.filter(task => task.id !==id ));
     };
 
+    const updateTask = (id, newTitle, newDiscreption) => {
+        setTasks (prevTasks => prevTasks.map 
+            (task => task.id ===id ? {...task, title: newTitle, description: newDiscreption} : task
+            )
+        );
+    }; 
+
     return {
         tasks,
         setTasks,
         addTask,
-        removeTask
+        removeTask,
+        updateTask
     };
 };
