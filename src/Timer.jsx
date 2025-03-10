@@ -39,7 +39,7 @@ const Timer = () => {
 
   const handleStartClick = async () => {
     await requestNotificationPermission();
-    if(soundOn){
+    if(soundOn && document.visibilityState === "visible"){
     const beep = new Audio('/startmp3.mp3');
     beep.play().catch(err => console.error('Unlock beep failed:', err));
     }

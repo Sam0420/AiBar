@@ -19,7 +19,7 @@ const useTimer = (initialTime = 1500, breakTime = 300) => {
 
     } else if (timeLeft === 0) {
 
-      if (soundOn) {
+      if (soundOn && document.visibilityState === "visible") {
         const audio = new Audio("/timer.mp3");
         audio.play().catch((err) =>
           console.log("Audio Playback Failed:", err)
