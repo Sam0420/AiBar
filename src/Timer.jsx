@@ -18,7 +18,9 @@ const Timer = () => {
     workColor,
     setWorkColor,
     breakColor, 
-    setBreakColor
+    setBreakColor,
+    soundOn, 
+    setSoundOn
   } = useTimer();
 
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
@@ -37,10 +39,10 @@ const Timer = () => {
 
   const handleStartClick = async () => {
     await requestNotificationPermission();
-
+    if(soundOn){
     const beep = new Audio('/startmp3.mp3');
     beep.play().catch(err => console.error('Unlock beep failed:', err));
-
+    }
     setIsRunning(true);
   };
 
@@ -71,6 +73,7 @@ const Timer = () => {
 
   // Dynamically pick background color based on break/work
   const backgroundColor = isBreak ? breakColor : workColor;
+
 
   return (
     <div
@@ -124,6 +127,8 @@ const Timer = () => {
           setBreakColor={setBreakColor}
           setWorkColor={setWorkColor}
           breakColor={breakColor}
+          soundOn={soundOn}
+          setSoundOn={setSoundOn}
         />
 
       )}

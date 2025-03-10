@@ -8,6 +8,7 @@ const useTimer = (initialTime = 1500, breakTime = 300) => {
   const [breakDuration, setBreakDuration] = useState(breakTime);
   const [workColor, setWorkColor] = useState("#ffcccc");
   const [breakColor, setBreakColor] = useState ("#ccffcc");
+  const [soundOn, setSoundOn] = useState (true); 
 
   useEffect(() => {
     if (isRunning && timeLeft > 0) {
@@ -17,12 +18,14 @@ const useTimer = (initialTime = 1500, breakTime = 300) => {
       return () => clearTimeout(timer);
 
     } else if (timeLeft === 0) {
-      // 1) Play audio -- use a leading slash if it's in public/
-      const audio = new Audio('/timer.mp3');
-      audio.play().catch((err) => {
-        console.log('Audio Playback Failed:', err);
-      });
 
+      if (soundOn) {
+        const audio = new Audio("/timer.mp3");
+        audio.play().catch((err) =>
+          console.log("Audio Playback Failed:", err)
+          );
+        }
+  
       // 2) Show notification (if granted)
       if ("Notification" in window && Notification.permission === "granted") {
         new Notification("Pomodoro Timer", {
@@ -41,7 +44,7 @@ const useTimer = (initialTime = 1500, breakTime = 300) => {
         setIsBreak(false);
       }
     }
-  }, [isRunning, timeLeft, isBreak, workTime, breakDuration]);
+  }, [isRunning, timeLeft, isBreak, workTime, breakDuration, soundOn]);
 
 
   const updateBreakTime = (newBreakMins) => {
@@ -90,7 +93,9 @@ const useTimer = (initialTime = 1500, breakTime = 300) => {
     workColor,
     setWorkColor,
     breakColor,
-    setBreakColor
+    setBreakColor, 
+    soundOn, 
+    setSoundOn
   };
 };
 

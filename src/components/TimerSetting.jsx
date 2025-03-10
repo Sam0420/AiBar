@@ -9,12 +9,15 @@ const TimerSettings = ({
   workColor, 
   setWorkColor, 
   breakColor,
-  setBreakColor
+  setBreakColor,
+  soundOn, 
+  setSoundOn 
 }) => {
   const [workInput, setWorkInput] = useState(currentWorkTime);
   const [breakInput, setBreakInput] = useState(currentBreakTime);
   const [workBgColor, setWorkBgColor] = useState(workColor);
   const [breakBgColor, setBreakBgColor] = useState(breakColor);
+  const [soundSetting, setSoundSetting] = useState(soundOn);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,6 +26,7 @@ const TimerSettings = ({
 
     setWorkColor(workBgColor); 
     setBreakColor(breakBgColor);
+    setSoundOn(soundSetting); 
     onClose();
   };
 
@@ -74,6 +78,16 @@ const TimerSettings = ({
               onChange={(e) => setBreakBgColor(e.target.value)}
             />
           </label>
+
+          <label className="mb3">
+            <span className="db mb1">Sound Enabled:</span>
+            <input
+              type="checkbox"
+              checked={soundSetting}
+              onChange={(e) => setSoundSetting(e.target.checked)}
+            />
+          </label>
+
 
           <div className="flex justify-end">
             <button type="submit" className="pa2 mr2 br2 bg-green white b">
