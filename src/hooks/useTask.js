@@ -45,3 +45,4 @@ const useTask = () => {
         updateTask
     };
 };
+export default useTask;

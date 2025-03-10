@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import useTimer from "./hooks/useTimer";
+import useTask from "./hooks/useTask";
 import TimerDisplay from "./components/DisplayTimer";
 import TimerSettings from "./components/TimerSetting";
+import TaskList from "./components/TaskList";  
 import 'tachyons';
 
 const Timer = () => {
@@ -22,6 +24,13 @@ const Timer = () => {
     soundOn, 
     setSoundOn
   } = useTimer();
+
+  const {
+    tasks,
+    addTask,
+    removeTask,
+    updateTask
+  } = useTask(); 
 
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
@@ -130,8 +139,14 @@ const Timer = () => {
           soundOn={soundOn}
           setSoundOn={setSoundOn}
         />
-
       )}
+
+      <TaskList
+        tasks={tasks}
+        addTask={addTask}
+        removeTask={removeTask}
+        updateTask={updateTask}
+      />
     </div>
   );
 };
