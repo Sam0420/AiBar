@@ -28,13 +28,6 @@ const AddTaskModal = ({show, onClose, onAdd}) => {
                 onChange={(e) => setTitle(e.target.value)}
                 className="pa2 mb2 input-reset ba b--black-20 w-100"
                 />
-
-                <textarea
-                placeholder="Task Description"
-                value={desc}
-                onChange={(e) => setDesc(e.target.value)}
-                className="pa2 mb2 input-reset ba b--black-20 w-100"
-                />
                 <div className="flex justify-end">
                     <button onClick={handleSubmit} className="pa2 br2 bg-green white b mr2">
                     Add Task

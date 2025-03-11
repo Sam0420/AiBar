@@ -7,9 +7,6 @@ const TaskList = ({ tasks, addTask, removeTask, updateTask }) => {
 
   return (
     <div className="bg-light-gray br3 pa4 ma3 shadow-5 w-40 tc">
-      <h2 className="f3 navy">Task Manager</h2>
-
-      {/* Button that opens the modal */}
       <button
         className="pa2 br2 bg-green white b mb3"
         onClick={() => setShowAddTaskModal(true)}
@@ -21,8 +18,8 @@ const TaskList = ({ tasks, addTask, removeTask, updateTask }) => {
       <AddTaskModal
         show={showAddTaskModal}
         onClose={() => setShowAddTaskModal(false)}
-        onAdd={(title, desc) => {
-          addTask(title, desc); // calls your existing addTask
+        onAdd={(title) => {
+          addTask(title); // calls your existing addTask
           setShowAddTaskModal(false); // close modal after adding
         }}
       />
@@ -43,7 +40,7 @@ const TaskList = ({ tasks, addTask, removeTask, updateTask }) => {
             <button
               className="pa1 br2 bg-blue white b"
               onClick={() =>
-                updateTask(task.id, "Updated Title", "Updated Description")
+                updateTask(task.id)
               }
             >
               Edit

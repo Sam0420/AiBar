@@ -20,7 +20,6 @@ const useTask = () => {
        const newTask = {
         id: Date.now(),
         title, 
-        description,
         completed : false
        };
        setTasks(prevTasks => [...prevTasks, newTask]);
@@ -30,9 +29,12 @@ const useTask = () => {
         setTasks (prevTasks => prevTasks.filter(task => task.id !==id ));
     };
 
-    const updateTask = (id, newTitle, newDiscreption) => {
-        setTasks (prevTasks => prevTasks.map 
-            (task => task.id ===id ? {...task, title: newTitle, description: newDiscreption} : task
+    const updateTask = (id, newTitle) => {
+        setTasks ((prevTasks) => 
+            prevTasks.map ((task) => 
+                task.id ===id 
+                    ? {...task, title: newTitle} 
+                    : task
             )
         );
     }; 
