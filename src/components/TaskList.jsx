@@ -1,69 +1,58 @@
-import React from "react";
 
-import { useState } from "react";
+import React, { useState } from "react";
+import AddTaskModal from "./AddTaskModal";
 
 const TaskList = ({ tasks, addTask, removeTask, updateTask }) => {
-    const [newTaskTitle, setNewTaskTitle] = useState("");
-    const [newTaskDesc, setNewTaskDesc] = useState("");
+  const [showAddTaskModal, setShowAddTaskModal] = useState(false);
 
-    const handleAddTask = () => {
-        if (newTaskTitle.trim() !== "") {
-            addTask(newTaskTitle, newTaskDesc);
-            setNewTaskTitle(""); // Clear input field
-            setNewTaskDesc("");
-        }
-    };
+  return (
+    <div className="bg-light-gray br3 pa4 ma3 shadow-5 w-40 tc">
+      <h2 className="f3 navy">Task Manager</h2>
 
-    return (
-        <div className="bg-light-gray br3 pa4 ma3 shadow-5 w-40 tc">
-            <h2 className="f3 navy">Task Manager</h2>
+      {/* Button that opens the modal */}
+      <button
+        className="pa2 br2 bg-green white b mb3"
+        onClick={() => setShowAddTaskModal(true)}
+      >
+        + Add Task
+      </button>
 
-            {/* Input Fields */}
-            <input
-                type="text"
-                placeholder="Task Title"
-                value={newTaskTitle}
-                onChange={(e) => setNewTaskTitle(e.target.value)}
-                className="pa2 mb2 input-reset ba b--black-20 w-100"
-            />
-            <input
-                type="text"
-                placeholder="Task Description"
-                value={newTaskDesc}
-                onChange={(e) => setNewTaskDesc(e.target.value)}
-                className="pa2 mb2 input-reset ba b--black-20 w-100"
-            />
-            <button className="pa2 br2 bg-green white b" onClick={handleAddTask}>
-                Add Task
+      {/* The Modal component (only visible if showAddTaskModal is true) */}
+      <AddTaskModal
+        show={showAddTaskModal}
+        onClose={() => setShowAddTaskModal(false)}
+        onAdd={(title, desc) => {
+          addTask(title, desc); // calls your existing addTask
+          setShowAddTaskModal(false); // close modal after adding
+        }}
+      />
+
+      <ul className="list pl0">
+        {tasks.map((task) => (
+          <li key={task.id} className="pa2 ba b--black-10 mv2">
+            <strong>{task.title}</strong>
+            <p>{task.description}</p>
+
+            <button
+              className="pa1 br2 bg-red white b mr2"
+              onClick={() => removeTask(task.id)}
+            >
+              Delete
             </button>
 
-            {/* Task List */}
-            <ul className="list pl0">
-                {tasks.map((task) => (
-                    <li key={task.id} className="pa2 ba b--black-10 mv2">
-                        <strong>{task.title}</strong>
-                        <p>{task.description}</p>
-
-                        {/* Remove Task Button */}
-                        <button
-                            className="pa1 br2 bg-red white b mr2"
-                            onClick={() => removeTask(task.id)}
-                        >
-                            Delete
-                        </button>
-
-                        {/* Update Task Button */}
-                        <button
-                            className="pa1 br2 bg-blue white b"
-                            onClick={() => updateTask(task.id, "Updated Title", "Updated Description")}
-                        >
-                            Edit
-                        </button>
-                    </li>
-                ))}
-            </ul>
-        </div>
-    );
+            <button
+              className="pa1 br2 bg-blue white b"
+              onClick={() =>
+                updateTask(task.id, "Updated Title", "Updated Description")
+              }
+            >
+              Edit
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 };
 
 export default TaskList;
