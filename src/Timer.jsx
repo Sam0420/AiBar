@@ -4,6 +4,7 @@ import useTask from "./hooks/useTask";
 import TimerDisplay from "./components/DisplayTimer";
 import TimerSettings from "./components/TimerSetting";
 import TaskList from "./components/TaskList";  
+import PlayPauseButton from "./components/PlayPauseButton";
 import 'tachyons';
 
 const Timer = () => {
@@ -100,23 +101,7 @@ const Timer = () => {
         workDuration={workTime}
       />
 
-      {!isRunning && (
-        <button
-          className="pa2 br2 bg-light-blue white b"
-          onClick={handleStartClick}
-        >
-          Start
-        </button>
-      )}
-
-      {isRunning && (
-        <button
-          className="pa2 br2 bg-orange white b"
-          onClick={() => setIsRunning(false)}
-        >
-          Pause
-        </button>
-      )}
+      <PlayPauseButton isRunning={isRunning} toggleTimer={() => setIsRunning((prev) => !prev)} />
 
       <button
         className="pa2 br2 bg-light-blue white b mt3"

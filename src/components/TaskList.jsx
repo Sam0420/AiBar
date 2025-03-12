@@ -20,7 +20,7 @@ const TaskList = ({ tasks, addTask, removeTask, updateTask }) => {
   };
 
   return (
-    <div className="bg-light-gray br3 pa4 ma3 shadow-5 w-40 tc">
+    <div className=" br3 pa4 ma3 shadow-5 w-40 tc">
 
       {/* Button or panel for adding a new task */}
       {!showAddPanel ? (

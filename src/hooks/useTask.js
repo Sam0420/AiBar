@@ -34,7 +34,7 @@ const useTask = () => {
         setTasks ((prevTasks) => 
             prevTasks.map ((task) => 
                 task.id ===id 
-                    ? {...task, title: newTitle} 
+                    ? {...task, title: newTitle } 
                     : task
             )
         );
