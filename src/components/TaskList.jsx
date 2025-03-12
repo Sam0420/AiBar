@@ -1,51 +1,75 @@
-
+// src/components/TaskList.jsx
 import React, { useState } from "react";
-import AddTaskModal from "./AddTaskModal";
+import TaskItem from "./TaskItem";
 
 const TaskList = ({ tasks, addTask, removeTask, updateTask }) => {
-  const [showAddTaskModal, setShowAddTaskModal] = useState(false);
+  // Toggles whether the "Add New Task" panel is visible
+  const [showAddPanel, setShowAddPanel] = useState(false);
+
+  // Local states for new task fields
+  const [newTitle, setNewTitle] = useState("");
+
+  const handleAddTask = () => {
+    if (newTitle.trim() !== "") {
+      addTask(newTitle);
+      // Clear fields
+      setNewTitle("");
+      // Hide the add panel
+      setShowAddPanel(false);
+    }
+  };
 
   return (
     <div className="bg-light-gray br3 pa4 ma3 shadow-5 w-40 tc">
-      <button
-        className="pa2 br2 bg-green white b mb3"
-        onClick={() => setShowAddTaskModal(true)}
-      >
-        + Add Task
-      </button>
 
-      {/* The Modal component (only visible if showAddTaskModal is true) */}
-      <AddTaskModal
-        show={showAddTaskModal}
-        onClose={() => setShowAddTaskModal(false)}
-        onAdd={(title) => {
-          addTask(title); // calls your existing addTask
-          setShowAddTaskModal(false); // close modal after adding
-        }}
-      />
+      {/* Button or panel for adding a new task */}
+      {!showAddPanel ? (
+        <button
+          className="pa2 br2 bg-green white b mb3"
+          onClick={() => setShowAddPanel(true)}
+        >
+          + Add Task
+        </button>
+      ) : (
+        <div className="pa3 mb3 ba b--black-10">
+          <h3 className="f5 mb2">Add a New Task</h3>
+          <input
+            type="text"
+            placeholder="Task Title"
+            value={newTitle}
+            onChange={(e) => setNewTitle(e.target.value)}
+            className="pa2 mb2 input-reset ba b--black-20 w-100"
+          />
+          <div className="flex justify-end">
+            <button
+              className="pa2 br2 bg-green white b mr2"
+              onClick={handleAddTask}
+            >
+              Save
+            </button>
+            <button
+              className="pa2 br2 bg-light-red white b"
+              onClick={() => {
+                setShowAddPanel(false);
+                setNewTitle("");
+                setNewDesc("");
+              }}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
 
+      {/* Render existing tasks */}
       <ul className="list pl0">
         {tasks.map((task) => (
-          <li key={task.id} className="pa2 ba b--black-10 mv2">
-            <strong>{task.title}</strong>
-            <p>{task.description}</p>
-
-            <button
-              className="pa1 br2 bg-red white b mr2"
-              onClick={() => removeTask(task.id)}
-            >
-              Delete
-            </button>
-
-            <button
-              className="pa1 br2 bg-blue white b"
-              onClick={() =>
-                updateTask(task.id)
-              }
-            >
-              Edit
-            </button>
-          </li>
+          <TaskItem
+            key={task.id}
+            task={task}
+            removeTask={removeTask}
+            updateTask={updateTask}
+          />
         ))}
       </ul>
     </div>

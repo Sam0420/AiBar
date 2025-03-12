@@ -30,6 +30,7 @@ const useTask = () => {
     };
 
     const updateTask = (id, newTitle) => {
+        console.log("updateTask called with:", id, newTitle);
         setTasks ((prevTasks) => 
             prevTasks.map ((task) => 
                 task.id ===id 
