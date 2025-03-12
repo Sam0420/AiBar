@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./PlayPauseButton.module.css"; // Scoped CSS
-import { useState } from "react";
+
 
 const PlayPauseButton = ({ isRunning, toggleTimer}) => {
 

@@ -5,6 +5,7 @@ import TimerDisplay from "./components/DisplayTimer";
 import TimerSettings from "./components/TimerSetting";
 import TaskList from "./components/TaskList";  
 import PlayPauseButton from "./components/PlayPauseButton";
+import SettingsButton from "./components/SettingsButton";
 import 'tachyons';
 
 const Timer = () => {
@@ -90,8 +91,14 @@ const Timer = () => {
   return (
     <div
     style={{ backgroundColor }}
-    className="min-vh-100 w-100 flex flex-column items-center justify-center"
-  >
+    className="min-vh-100 w-100 flex flex-column items-center justify-center">
+    <div style={{ position: "absolute", top: "40px", right: "40px", zIndex: 10 }}>
+      <SettingsButton
+      onClick={() => setIsSettingsOpen((prev) => !prev)}
+      isOpen={isSettingsOpen}
+      />
+    </div>
+
       <h1 className="f1 mb3">AiBar</h1>
       <h2 className="f3 mb3">
         {isBreak ? "Break Time! 🎉" : "Work Time! 💪"}
@@ -105,12 +112,6 @@ const Timer = () => {
 
       <PlayPauseButton isRunning={isRunning} toggleTimer={toggleTimer} /> 
 
-      <button
-        className="pa2 br2 bg-light-blue white b mt3"
-        onClick={() => setIsSettingsOpen(true)}
-      >
-        Settings
-      </button>
 
       {isSettingsOpen && (
         <TimerSettings
