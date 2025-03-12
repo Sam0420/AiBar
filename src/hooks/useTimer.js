@@ -55,7 +55,7 @@ const useTimer = (initialTime = 1500, breakTime = 300) => {
       const usedSoFar = breakDuration - timeLeft;
       let newTimeLeft = newBreakSeconds - usedSoFar;
       if (newTimeLeft < 0) {
-        newTimeLeft = 0; // can't go negative
+        newTimeLeft = 1; // can't go negative
       }
       setTimeLeft(newTimeLeft);
     }

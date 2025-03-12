@@ -47,13 +47,15 @@ const Timer = () => {
     }
   };
 
-  const handleStartClick = async () => {
+  const toggleTimer = async () => {
+    if (!isRunning){
     await requestNotificationPermission();
     if(soundOn && document.visibilityState === "visible"){
     const beep = new Audio('/startmp3.mp3');
     beep.play().catch(err => console.error('Unlock beep failed:', err));
     }
-    setIsRunning(true);
+  }
+    setIsRunning((prev) => !prev); 
   };
 
   useEffect(() => {
@@ -96,12 +98,12 @@ const Timer = () => {
       </h2>
 
       <TimerDisplay
-        timeLeft={timeLeft}
-        isRunning={isRunning}
-        workDuration={workTime}
+      timeLeft={timeLeft}
+      isRunning={isRunning}
+      duration={isBreak ? breakDuration : workTime}
       />
 
-      <PlayPauseButton isRunning={isRunning} toggleTimer={() => setIsRunning((prev) => !prev)} />
+      <PlayPauseButton isRunning={isRunning} toggleTimer={toggleTimer} /> 
 
       <button
         className="pa2 br2 bg-light-blue white b mt3"

@@ -1,15 +1,15 @@
 import React from "react";
 
-const TimerDisplay = ({ timeLeft, workDuration }) => {
-  // Format mm:ss
+const TimerDisplay = ({ timeLeft, duration }) => {
+  // Format seconds into mm:ss
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${minutes}:${secs.toString().padStart(2, '0')}`;
   };
 
-  // Calculate progress
-  const progress = Math.round(((workDuration - timeLeft) / workDuration) * 100);
+  // Calculate progress based on the current mode's duration
+  const progress = Math.round(((duration - timeLeft) / duration) * 100);
 
   return (
     <div className="timer-display tc"> {/* "tc" for text-center */}
