@@ -11,3 +11,7 @@
   font-weight: 150;
   font-style: normal;
 }
+
+.translate-y-50 {
+  transform: translateY(-50%);
+}

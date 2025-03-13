@@ -93,14 +93,14 @@ const Timer = () => {
     <div
     style={{ backgroundColor }}
     className="min-vh-100 w-100 flex flex-column items-center justify-center">
-    <div style={{ position: "absolute", top: "40px", right: "40px", zIndex: 10 }}>
+    <div className="absolute top-2 right-2 z-10">
       <SettingsButton
       onClick={() => setIsSettingsOpen((prev) => !prev)}
       isOpen={isSettingsOpen}
       />
     </div>
 
-      <h1 className="title f-subheadline-l mb1 ">AiBar</h1>
+      <h1 className="title f-subheadline-l mb1  ">AiBar</h1>
       <h2 className="subtitle f2 mb1">
         {isBreak ? "Break Time! 🎉" : "Work Time! 💪"}
       </h2>
