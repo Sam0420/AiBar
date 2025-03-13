@@ -1,5 +1,5 @@
 .container {
-  width: 65px; /* 🔹 Decrease size while keeping everything proportional */
+  width: 65px; 
   height: 65px;
   position: relative;
   border-radius: 50%;
@@ -28,7 +28,6 @@
   transform: translate(-50%, -50%);
 }
 
-/* 🔹 Scaling animation remains the same */
 .playBtn:checked {
   animation: borderAnimate 700ms ease-in-out 1;
   animation-fill-mode: forwards;

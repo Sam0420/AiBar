@@ -1,4 +1,5 @@
 import React from "react";
+import "./DisplayTimer.css";
 
 const TimerDisplay = ({ timeLeft, duration }) => {
   // Format seconds into mm:ss
@@ -13,12 +14,12 @@ const TimerDisplay = ({ timeLeft, duration }) => {
 
   return (
     <div className="timer-display tc"> {/* "tc" for text-center */}
-      <div className="time-count f1 b mb3">
+      <div className="time-count f1 mb3">
         {formatTime(timeLeft)}
       </div>
 
       {/* Progress bar container */}
-      <div className="progress-bar-container w-50 center bg-black-10 br-pill overflow-hidden mb3">
+      <div className="progress-bar-container w-90 center bg-black-10 br-pill overflow-hidden mb3">
         <div
           className="progress-bar bg-black h1"
           style={{ width: `${progress}%` }}

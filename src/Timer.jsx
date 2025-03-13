@@ -6,6 +6,7 @@ import TimerSettings from "./components/TimerSetting";
 import TaskList from "./components/TaskList";  
 import PlayPauseButton from "./components/PlayPauseButton";
 import SettingsButton from "./components/SettingsButton";
+import "./index.css";
 import 'tachyons';
 
 const Timer = () => {
@@ -99,8 +100,8 @@ const Timer = () => {
       />
     </div>
 
-      <h1 className="f1 mb3">AiBar</h1>
-      <h2 className="f3 mb3">
+      <h1 className="title f-subheadline-l mb1 ">AiBar</h1>
+      <h2 className="subtitle f2 mb1">
         {isBreak ? "Break Time! 🎉" : "Work Time! 💪"}
       </h2>
 

@@ -1,9 +1,8 @@
 
 import React from "react";
-import "./SettingsButton.css"; // Now this is global CSS
+import "./SettingsButton.css";
 
 const SettingsButton = ({ onClick, isOpen, className = "" }) => {
-  // Use the class names directly as defined in your CSS.
   const buttonClasses = `setting-btn ${className} ${isOpen ? "open" : ""}`;
 
   return (
