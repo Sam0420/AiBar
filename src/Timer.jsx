@@ -90,52 +90,62 @@ const Timer = () => {
 
 
   return (
-    <div
-    style={{ backgroundColor }}
-    className="min-vh-100 w-100 flex flex-column items-center justify-center">
-    <div className="absolute top-2 right-2 z-10">
-      <SettingsButton
-      onClick={() => setIsSettingsOpen((prev) => !prev)}
-      isOpen={isSettingsOpen}
-      />
-    </div>
-
-      <h1 className="title f-subheadline-l mb1  ">AiBar</h1>
-      <h2 className="subtitle f2 mb1">
-        {isBreak ? "Break Time! 🎉" : "Work Time! 💪"}
-      </h2>
-
-      <TimerDisplay
-      timeLeft={timeLeft}
-      isRunning={isRunning}
-      duration={isBreak ? breakDuration : workTime}
-      />
-
-      <PlayPauseButton isRunning={isRunning} toggleTimer={toggleTimer} /> 
-
-
-      {isSettingsOpen && (
-        <TimerSettings
-          currentWorkTime={workTime / 60}
-          currentBreakTime={breakDuration / 60}
-          onClose={() => setIsSettingsOpen(false)}
-          onTimeChange={handleTimeChange}
-          onBreakChange={handleBreakChange}
-          workColor={workColor}
-          setBreakColor={setBreakColor}
-          setWorkColor={setWorkColor}
-          breakColor={breakColor}
-          soundOn={soundOn}
-          setSoundOn={setSoundOn}
+    <div style={{ backgroundColor }} className="min-vh-100 w-100 flex flex-column">
+      
+      {/* Fixed Header Layout */}
+      <div className="w-100 flex items-center justify-between ph4 pv3 z-10">
+        <h1 className="title">AiBar</h1>
+  
+        {/* Right-side Button Group */}
+        <div className="flex items-center gap-4">
+          <SettingsButton
+            onClick={() => setIsSettingsOpen((prev) => !prev)}
+            isOpen={isSettingsOpen}
+          />
+        </div>
+        <button className="btn">Profile</button>
+        <button className="btn">Logout</button>
+      </div>
+  
+      {/* Main Content - Centered */}
+      <div className="flex flex-column items-center justify-center flex-grow-1">
+        <h2 className="subtitle f2 mb1">
+          {isBreak ? "Break Time! 🎉" : "Work Time! 💪"}
+        </h2>
+  
+        <TimerDisplay
+          timeLeft={timeLeft}
+          isRunning={isRunning}
+          duration={isBreak ? breakDuration : workTime}
         />
-      )}
-
-      <TaskList
-        tasks={tasks}
-        addTask={addTask}
-        removeTask={removeTask}
-        updateTask={updateTask}
-      />
+  
+        <PlayPauseButton isRunning={isRunning} toggleTimer={toggleTimer} /> 
+  
+        {/* Settings Panel */}
+        {isSettingsOpen && (
+          <TimerSettings
+            currentWorkTime={workTime / 60}
+            currentBreakTime={breakDuration / 60}
+            onClose={() => setIsSettingsOpen(false)}
+            onTimeChange={handleTimeChange}
+            onBreakChange={handleBreakChange}
+            workColor={workColor}
+            setBreakColor={setBreakColor}
+            setWorkColor={setWorkColor}
+            breakColor={breakColor}
+            soundOn={soundOn}
+            setSoundOn={setSoundOn}
+          />
+        )}
+  
+        {/* Task List */}
+        <TaskList
+          tasks={tasks}
+          addTask={addTask}
+          removeTask={removeTask}
+          updateTask={updateTask}
+        />
+      </div>
     </div>
   );
 };

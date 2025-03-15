@@ -19,7 +19,7 @@ const TimerDisplay = ({ timeLeft, duration }) => {
       </div>
 
       {/* Progress bar container */}
-      <div className="progress-bar-container w-90 center bg-black-10 br-pill overflow-hidden mb3">
+      <div className="progress-bar-container w-40 center bg-black-10 br-pill overflow-hidden mb3">
         <div
           className="progress-bar bg-black h1"
           style={{ width: `${progress}%` }}
