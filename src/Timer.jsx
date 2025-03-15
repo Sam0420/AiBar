@@ -90,38 +90,33 @@ const Timer = () => {
 
 
   return (
-    <div style={{ backgroundColor }} className="min-vh-100 w-100 flex flex-column">
+    <div className="app-container">
       
-      {/* Fixed Header Layout */}
-      <div className="w-100 flex items-center justify-between ph4 pv3 z-10">
+      {/* HEADER */}
+      <header className="header">
         <h1 className="title">AiBar</h1>
-  
-        {/* Right-side Button Group */}
-        <div className="flex items-center gap-4">
+
+        {/* Right-side Buttons */}
+        <div className="header-buttons">
+          <button className="btn">Profile</button>
+          <button className="btn">Logout</button>
           <SettingsButton
             onClick={() => setIsSettingsOpen((prev) => !prev)}
             isOpen={isSettingsOpen}
           />
         </div>
-        <button className="btn">Profile</button>
-        <button className="btn">Logout</button>
-      </div>
-  
-      {/* Main Content - Centered */}
-      <div className="flex flex-column items-center justify-center flex-grow-1">
-        <h2 className="subtitle f2 mb1">
-          {isBreak ? "Break Time! 🎉" : "Work Time! 💪"}
-        </h2>
-  
+      </header>
+
+      {/* MAIN CONTENT */}
+      <main className="main-content">
+        <h2>{isBreak ? "Break Time! 🎉" : "Work Time! 💪"}</h2>
         <TimerDisplay
           timeLeft={timeLeft}
           isRunning={isRunning}
           duration={isBreak ? breakDuration : workTime}
         />
-  
-        <PlayPauseButton isRunning={isRunning} toggleTimer={toggleTimer} /> 
-  
-        {/* Settings Panel */}
+        <PlayPauseButton isRunning={isRunning} toggleTimer={toggleTimer} />
+
         {isSettingsOpen && (
           <TimerSettings
             currentWorkTime={workTime / 60}
@@ -137,15 +132,14 @@ const Timer = () => {
             setSoundOn={setSoundOn}
           />
         )}
-  
-        {/* Task List */}
+
         <TaskList
           tasks={tasks}
           addTask={addTask}
           removeTask={removeTask}
           updateTask={updateTask}
         />
-      </div>
+      </main>
     </div>
   );
 };

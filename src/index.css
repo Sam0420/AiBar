@@ -15,3 +15,63 @@
 .translate-y-50 {
   transform: translateY(-50%);
 }
+
+/* App container to ensure full height */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffcccc; /* Your pink background */
+}
+
+/* HEADER STYLES */
+.header {
+  display: flex;
+  justify-content: space-between; /* Push title left & buttons right */
+  align-items: center;
+  padding: 20px 40px; /* Adjust spacing */
+  position: fixed; /* Keep header fixed at the top */
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.1); /* Slight transparent effect */
+  backdrop-filter: blur(10px); /* Glassmorphism effect */
+  z-index: 100;
+}
+
+/* TITLE */
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* BUTTONS CONTAINER */
+.header-buttons {
+  display: flex;
+  gap: 15px; /* Controls spacing between buttons */
+}
+
+/* BUTTONS */
+.btn {
+  padding: 10px 15px;
+  border: none;
+  background-color: #222;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: #444;
+}
+
+/* MAIN CONTENT */
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 80px; /* Prevent overlap with fixed header */
+}
