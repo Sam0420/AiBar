@@ -90,7 +90,9 @@ const Timer = () => {
 
 
   return (
-    <div className="app-container">
+    <div style={{ backgroundColor }} className="min-vh-100 w-100 flex flex-column">
+      
+      <div className="app-container">
       
       {/* HEADER */}
       <header className="header">
@@ -98,8 +100,6 @@ const Timer = () => {
 
         {/* Right-side Buttons */}
         <div className="header-buttons">
-          <button className="btn">Profile</button>
-          <button className="btn">Logout</button>
           <SettingsButton
             onClick={() => setIsSettingsOpen((prev) => !prev)}
             isOpen={isSettingsOpen}
@@ -140,6 +140,7 @@ const Timer = () => {
           updateTask={updateTask}
         />
       </main>
+    </div>
     </div>
   );
 };
