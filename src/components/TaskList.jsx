@@ -24,10 +24,10 @@ const TaskList = ({ tasks, addTask, removeTask, updateTask }) => {
         </AddTaskButton>
       ) : (
         <div className="add-task-panel">
-          <h3>Add a New Task</h3>
+          <p className="text">Add a New Task</p>
           <input
             type="text"
-            placeholder="Task Title"
+            placeholder="Task"
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
             className="task-input"

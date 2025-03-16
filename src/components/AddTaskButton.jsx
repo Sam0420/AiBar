@@ -22,6 +22,7 @@ const AddTaskButton = ({ as: Tag = "button", children, filled, secondary, ...res
 
 AddTaskButton.defaultProps = {
   as: "button"
+  
 };
 
 export default AddTaskButton;
