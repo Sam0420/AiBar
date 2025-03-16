@@ -52,7 +52,6 @@ const TaskList = ({ tasks, addTask, removeTask, updateTask }) => {
               onClick={() => {
                 setShowAddPanel(false);
                 setNewTitle("");
-                setNewDesc("");
               }}
             >
               Cancel

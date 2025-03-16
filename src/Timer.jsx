@@ -52,6 +52,7 @@ const Timer = () => {
   const toggleTimer = async () => {
     if (!isRunning){
     await requestNotificationPermission();
+
     if(soundOn && document.visibilityState === "visible"){
     const beep = new Audio('/startmp3.mp3');
     beep.play().catch(err => console.error('Unlock beep failed:', err));
@@ -62,6 +63,11 @@ const Timer = () => {
 
   useEffect(() => {
     const handleKeyPress = (event)=>{
+      const tagName = event.target.tagName.toLowerCase();
+      const isEditable = event.target.isContentEditable;
+      if (tagName === "input" || tagName === "textarea" || isEditable) {
+        return;
+      }
       if (event.code === "Space"){
         event.preventDefault();
         setIsRunning((prev) => !prev);
