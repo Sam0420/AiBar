@@ -13,20 +13,21 @@ const TimerDisplay = ({ timeLeft, duration }) => {
   const progress = Math.round(((duration - timeLeft) / duration) * 100);
 
   return (
-    <div className="timer-display tc"> {/* "tc" for text-center */}
-      <div className="time-count f1 mb3">
-        {formatTime(timeLeft)}
-      </div>
-
-      {/* Progress bar container */}
-      <div className="progress-bar-container w-40 center bg-black-10 br-pill overflow-hidden mb3">
-        <div
-          className="progress-bar bg-black h1"
-          style={{ width: `${progress}%` }}
-        />
-      </div>
+    <div className="timer-display tc">
+    <div className="time-count f-subheadline-l mb3">
+    {formatTime(timeLeft)}
     </div>
+
+  {/* Fixed-size progress bar container */}
+  <div className="progress-bar-container center mb3">
+    <div
+      className="progress-bar"
+      style={{ width: `${progress}%` , minWidth: "1px"  }}
+    />
+  </div>
+  </div>
   );
+  
 };
 
 export default TimerDisplay;

@@ -7,3 +7,22 @@
     font-weight: 100;
     font-style: normal;
 }
+
+
+/* PROGRESS BAR CONTAINER */
+.progress-bar-container {
+    width: 300px; /* Set a fixed width to prevent shrinking */
+    max-width:50%; /* Keeps it responsive */
+    height: 5px;
+    background-color: rgba(0, 0, 0, 0.1); /* Light gray background */
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative; /* Ensures it stays in place */
+  }
+  
+  /* PROGRESS BAR */
+  .progress-bar {
+    height: 100%;
+    background-color: black; /* Ensure the bar is visible */
+    transition: width 0.3s ease-in-out; /* Smooth animation */
+  }

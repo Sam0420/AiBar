@@ -29,7 +29,7 @@
 /* TITLE */
 .title {
   font-size: 2rem;
-  font-weight: bold;
+
   font-family: "Poppins", serif;
   font-weight: 300;
 }
@@ -48,4 +48,6 @@
   align-items: center;
   justify-content: center;
   padding-top: 80px; /* Prevent overlap with fixed header */
-}
+  font-weight: normal;
+  font-family: "Poppins", serif;
+} 

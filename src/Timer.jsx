@@ -106,10 +106,10 @@ const Timer = () => {
           />
         </div>
       </header>
-
+      
       {/* MAIN CONTENT */}
       <main className="main-content">
-        <h2>{isBreak ? "Break Time! 🎉" : "Work Time! 💪"}</h2>
+      <p className="  f3 ">{isBreak ? "Break Time! 🎉" : "Work Time! 💪"}</p>
         <TimerDisplay
           timeLeft={timeLeft}
           isRunning={isRunning}
