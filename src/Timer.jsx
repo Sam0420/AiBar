@@ -71,7 +71,7 @@ const Timer = () => {
       if (event.code === "Space"){
         event.preventDefault();
         setIsRunning((prev) => !prev);
-    } else if (event.code === "Escape"){
+      } else if (event.code === "Escape"){
         event.preventDefault();
         setIsSettingsOpen((prev) => !prev);
       }

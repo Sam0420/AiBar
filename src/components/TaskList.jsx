@@ -1,59 +1,45 @@
-// src/components/TaskList.jsx
 import React, { useState } from "react";
 import TaskItem from "./TaskItem";
+import AddTaskButton from "./AddTaskButton";
+import "./TaskList.css";
 
 const TaskList = ({ tasks, addTask, removeTask, updateTask }) => {
-  // Toggles whether the "Add New Task" panel is visible
   const [showAddPanel, setShowAddPanel] = useState(false);
-
-  // Local states for new task fields
   const [newTitle, setNewTitle] = useState("");
 
   const handleAddTask = () => {
     if (newTitle.trim() !== "") {
       addTask(newTitle);
-      // Clear fields
       setNewTitle("");
-      // Hide the add panel
       setShowAddPanel(false);
     }
   };
 
   return (
-    <div className=" br3 pa4 ma3 shadow-5 w-40 tc">
-
-      {/* Button or panel for adding a new task */}
+    <div className="task-list-container">
+      {/* Custom Button for Adding a New Task */}
       {!showAddPanel ? (
-        <button
-          className="pa2 br2 bg-green white b mb3"
-          onClick={() => setShowAddPanel(true)}
-        >
+        <AddTaskButton filled onClick={() => setShowAddPanel(true)}>
           + Add Task
-        </button>
+        </AddTaskButton>
       ) : (
-        <div className="pa3 mb3 ba b--black-10">
-          <h3 className="f5 mb2">Add a New Task</h3>
+        <div className="add-task-panel">
+          <h3>Add a New Task</h3>
           <input
             type="text"
             placeholder="Task Title"
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
-            className="pa2 mb2 input-reset ba b--black-20 w-100"
+            className="task-input"
           />
-          <div className="flex justify-end">
-            <button
-              className="pa2 br2 bg-green white b mr2"
-              onClick={handleAddTask}
-            >
+          <div className="buttons">
+            <button className="save-btn" onClick={handleAddTask}>
               Save
             </button>
-            <button
-              className="pa2 br2 bg-light-red white b"
-              onClick={() => {
-                setShowAddPanel(false);
-                setNewTitle("");
-              }}
-            >
+            <button className="cancel-btn" onClick={() => { 
+              setShowAddPanel(false); 
+              setNewTitle(""); 
+            }}>
               Cancel
             </button>
           </div>
@@ -61,13 +47,13 @@ const TaskList = ({ tasks, addTask, removeTask, updateTask }) => {
       )}
 
       {/* Render existing tasks */}
-      <ul className="list pl0">
+      <ul className="task-list">
         {tasks.map((task) => (
-          <TaskItem
-            key={task.id}
-            task={task}
-            removeTask={removeTask}
-            updateTask={updateTask}
+          <TaskItem 
+            key={task.id} 
+            task={task} 
+            removeTask={removeTask} 
+            updateTask={updateTask} 
           />
         ))}
       </ul>

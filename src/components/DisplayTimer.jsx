@@ -14,7 +14,7 @@ const TimerDisplay = ({ timeLeft, duration }) => {
 
   return (
     <div className="timer-display tc">
-    <div className="time-count f-subheadline-l mb3">
+    <div className="time-count  mb3">
     {formatTime(timeLeft)}
     </div>
 
