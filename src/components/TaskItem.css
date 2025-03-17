@@ -1,3 +1,32 @@
+/* ✅ Task item container - Flexbox layout */
+.task-item {
+    display: flex;
+    align-items: center; /* Keeps text and buttons aligned */
+    justify-content: space-between; /* Pushes buttons to the right */
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  /* ✅ Expands the task text to take available space */
+  .task-content {
+    flex: 1;
+    padding-left: 60px; 
+  }
+  
+  /* ✅ Button container to hold "Edit" and "Delete" */
+  .task-buttons {
+    display: flex;
+    gap: 10px; /* Adds space between buttons */
+  }
+  
+  /* ✅ Task Input (when editing) */
+  .task-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
 .buttons {
     display: flex;
     flex-direction: column;
@@ -68,4 +97,26 @@
   .button-17.cancel:hover {
     background: #fffbfb; /* Darker red on hover */
     color: rgb(0, 0, 0);
+  }
+
+  .my-fab {
+    background-color: #000000 !important; /* Custom purple */
+    color: white !important;
+    margin-left: 5px !important;
+  }
+  
+  .my-fab:hover {
+    background-color: #fbf6f6 !important; /* Darker on hover */
+    color: #000000 !important;
+  }
+
+  .my-iconButton {
+    background-color: #000000 !important; /* Custom purple */
+    color: white !important;
+
+  }
+  
+  .my-iconButton:hover {
+    background-color: #fbf6f6 !important; /* Darker on hover */
+    color: #000000 !important;
   }
