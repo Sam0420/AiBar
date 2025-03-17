@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import "./TaskItem.css";
 const TaskItem = ({task, removeTask, updateTask}) => {
     const [isEditing, setIsEditing] = useState (false); 
     const [editTitle, setEditTitle] = useState(task.title);
@@ -24,15 +24,15 @@ const TaskItem = ({task, removeTask, updateTask}) => {
             value={editTitle}
             onChange={(e) => setEditTitle(e.target.value)}
           />
-          <div className="flex justify-end">
+          <div className="buttons-container">
             <button
-              className="pa1 br2 bg-blue white b mr2"
+              className="save-btn button-17 save"
               onClick={handleSave}
             >
               Save
             </button>
             <button
-              className="pa1 br2 bg-light-red white b"
+              className="save-btn button-17 cancel"
               onClick={() => {
                 setEditTitle(task.title);  
                 setIsEditing(false);

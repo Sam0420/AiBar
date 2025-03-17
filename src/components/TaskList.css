@@ -37,6 +37,14 @@
     font-weight: 300;
   }
 
+  /* ✅ Button Container */
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 5px;
+}
+  
 /* ✅ Default Button Styles */
 .button-17 {
   align-items: center;
