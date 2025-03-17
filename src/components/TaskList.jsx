@@ -33,10 +33,10 @@ const TaskList = ({ tasks, addTask, removeTask, updateTask }) => {
             className="task-input"
           />
           <div className="buttons">
-            <button className="save-btn" onClick={handleAddTask}>
+            <button className="save-btn button-17 save" onClick={handleAddTask}>
               Save
             </button>
-            <button className="cancel-btn" onClick={() => { 
+            <button className="cancel-btn button-17 cancel " onClick={() => { 
               setShowAddPanel(false); 
               setNewTitle(""); 
             }}>
