@@ -24,6 +24,10 @@
     width: 90%;
     max-width: 400px;
   }
+
+  .modal-content * { /* ✅ Ensures all elements inside modal use the same font */
+    font-family: "Poppins", sans-serif;
+    }   
   
   .modal-buttons {
     display: flex;
@@ -33,4 +37,22 @@
 
   .title{
     font-size: larger;
+  }
+
+  .form-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* ✅ Puts label & input side by side */
+    margin-bottom: 10px; /* ✅ Adds spacing between form groups */
+  }
+  
+  .form-group label {
+    flex: 1; /* ✅ Allows the label to take available space */
+    font-size: 14px; /* ✅ Adjusts label font size */
+  }
+  
+  .form-group input {
+    width: 60px; /* ✅ Shrinks input width */
+    padding: 5px; /* ✅ Adjusts padding to reduce height */
+    font-size: 14px;
   }
