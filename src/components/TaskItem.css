@@ -21,7 +21,6 @@
     padding-right: 20px; /* ✅ Extra space from buttons */
     min-width: 0; /* ✅ Fixes flexbox issue */
     }
-     
 
     .task-content.completed {
       text-decoration: line-through;
