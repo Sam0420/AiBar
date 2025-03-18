@@ -8,6 +8,13 @@ import "./TaskItem.css"; // Ensure this file contains the CSS below
 const TaskItem = ({ task, removeTask, updateTask }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editTitle, setEditTitle] = useState(task.title);
+  const [isCompleted, setIsCompleted] = useState(false);
+
+  const toggleComplete = () => {
+    if (!isEditing) { // ✅ Prevents toggle while editing
+      setIsCompleted((prev) => !prev);
+    }
+  };
 
   const handleSave = () => {
     updateTask(task.id, editTitle);
@@ -17,37 +24,40 @@ const TaskItem = ({ task, removeTask, updateTask }) => {
   return (
     <li className="task-item">
       {/* Left Side - Task Text */}
-      <div className="task-content">
-        {isEditing ? (
-          <div className="mb2">
-            <input
-              type="text"
-              className="task-input"
-              value={editTitle}
-              onChange={(e) => setEditTitle(e.target.value)}
-            />
-            <div className="buttons-container">
-              <button className="save-btn button-17 save" onClick={handleSave}>
-                Save
-              </button>
-              <button
-                className="cancel-btn button-17 cancel"
-                onClick={() => {
-                  setEditTitle(task.title);
-                  setIsEditing(false);
-                }}
-              >
-                Cancel
-              </button>
-            </div>
+      {isEditing ? (
+        // --- EDIT MODE ---
+        <div className="mb2">
+          <input
+            type="text"
+            className="task-input"
+            value={editTitle}
+            onChange={(e) => setEditTitle(e.target.value)}
+          />
+          <div className="buttons-container">
+            <button className="save-btn button-17 save" onClick={handleSave}>
+              Save
+            </button>
+            <button
+              className="cancel-btn button-17 cancel"
+              onClick={() => {
+                setEditTitle(task.title);
+                setIsEditing(false);
+              }}
+            >
+              Cancel
+            </button>
           </div>
-        ) : (
-          <>
-            <strong>{task.title}</strong>
-            {task.description && <p>{task.description}</p>}
-          </>
-        )}
-      </div>
+        </div>
+      ) : (
+        // --- VIEW MODE ---
+        <div
+          className={`task-content ${isCompleted ? "completed" : ""}`}
+          onClick={toggleComplete}
+        >
+          <strong>{task.title}</strong>
+          {task.description && <p>{task.description}</p>}
+        </div>
+      )}
 
       {/* Right Side - Edit & Delete Buttons */}
       {!isEditing && (

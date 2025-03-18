@@ -1,22 +1,38 @@
 /* ✅ Task item container - Flexbox layout */
 .task-item {
-    display: flex;
-    align-items: center; /* Keeps text and buttons aligned */
-    justify-content: space-between; /* Pushes buttons to the right */
-    padding: 10px;
-    margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%; /* ✅ Takes full width of container */
+  max-width: 500px; /* ✅ Adjust width as needed */
+  padding: 10px;
+  margin-bottom: 10px;
+  overflow: hidden; /* ✅ Prevents overflow */
   }
   
   /* ✅ Expands the task text to take available space */
   .task-content {
     flex: 1;
-    padding-left: 60px; 
-  }
-  
+    transition: all 0.3s ease; 
+    flex: 1; /* ✅ Expands to take available space */
+    word-break: break-word; /* ✅ Wrap long words */
+    white-space: normal; /* ✅ Allows multiple lines */
+    overflow-wrap: break-word; /* ✅ Wraps text properly */
+    padding-right: 20px; /* ✅ Extra space from buttons */
+    min-width: 0; /* ✅ Fixes flexbox issue */
+    }
+     
+
+    .task-content.completed {
+      text-decoration: line-through;
+      opacity: 0.6;
+      white-space: normal; /* ✅ Ensures it stays readable */
+    }
   /* ✅ Button container to hold "Edit" and "Delete" */
   .task-buttons {
-    display: flex;
-    gap: 10px; /* Adds space between buttons */
+  display: flex;
+  gap: 15px; /* ✅ Adds space between buttons */
+  margin-left: 10px; /* ✅ Moves buttons away from text */
   }
   
   /* ✅ Task Input (when editing) */
