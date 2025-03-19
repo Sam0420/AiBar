@@ -118,6 +118,7 @@
     background-color: #000000 !important; /* Custom purple */
     color: white !important;
     margin-left: 5px !important;
+    z-index: 1 !important; /* ✅ Lower than modal */
   }
   
   .my-fab:hover {
