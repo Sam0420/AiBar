@@ -5,7 +5,7 @@
   justify-content: space-between;
   width: 100%; /* ✅ Takes full width of container */
   max-width: 500px; /* ✅ Adjust width as needed */
-  padding: 10px;
+  padding: 20px;
   margin-bottom: 10px;
   overflow: hidden; /* ✅ Prevents overflow */
   }
@@ -13,7 +13,6 @@
   /* ✅ Expands the task text to take available space */
   .task-content {
     flex: 1;
-    transition: all 0.3s ease; 
     flex: 1; /* ✅ Expands to take available space */
     word-break: break-word; /* ✅ Wrap long words */
     white-space: normal; /* ✅ Allows multiple lines */
@@ -22,10 +21,10 @@
     min-width: 0; /* ✅ Fixes flexbox issue */
     }
 
-    .task-content.completed {
-      text-decoration: line-through;
-      opacity: 0.6;
-      white-space: normal; /* ✅ Ensures it stays readable */
+  .task-content.completed {
+    text-decoration: line-through;
+    opacity: 0.6;
+    white-space: normal; /* ✅ Ensures it stays readable */
     }
   /* ✅ Button container to hold "Edit" and "Delete" */
   .task-buttons {
@@ -36,12 +35,21 @@
   
   /* ✅ Task Input (when editing) */
   .task-input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
+    width: 100%; /* ✅ Same width as .task-content */
+    max-width: 500px; /* ✅ Matches max width of task items */
+    padding: 15px; /* ✅ Same padding as task content */
+    font-size: 16px; /* ✅ Matches text size */
+    font-weight: 400; /* ✅ Ensures same text weight */
+    display: flex;
+    flex-direction: column; /* ✅ Keeps input & buttons aligned */
+}
+.edit {
+  width: 100%; /* ✅ Make sure the container expands */
+  max-width: 500px; /* ✅ Matches task item width */
+  display: flex;
+  flex-direction: column; /* ✅ Keeps input & buttons aligned */
   
+}
 .buttons {
     display: flex;
     flex-direction: column;

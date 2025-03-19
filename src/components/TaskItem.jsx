@@ -17,16 +17,22 @@ const TaskItem = ({ task, removeTask, updateTask }) => {
   };
 
   const handleSave = () => {
+    if (editTitle.trim() === "") {
+      setEditTitle(task.title); // Reset to original if empty
+      setIsEditing(false); // Exit edit mode
+      return;
+    }
+  
     updateTask(task.id, editTitle);
     setIsEditing(false);
   };
-
+  
   return (
     <li className="task-item">
       {/* Left Side - Task Text */}
       {isEditing ? (
         // --- EDIT MODE ---
-        <div className="mb2">
+        <div  className="edit">
           <input
             type="text"
             className="task-input"
