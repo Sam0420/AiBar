@@ -102,7 +102,7 @@ const Timer = () => {
       
       {/* HEADER */}
       <header className="header">
-        <h1 className="title">AiBar</h1>
+        <p className="title">AiBar</p>
 
         {/* Right-side Buttons */}
         <div className="header-buttons">

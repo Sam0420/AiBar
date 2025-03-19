@@ -26,9 +26,16 @@
   z-index: 100;
 }
 
+.f3{
+  font-size: 20px !important;
+
+  font-family: "Poppins", serif;
+  font-weight: 300;
+}
+
 /* TITLE */
 .title {
-  font-size: 1rem;
+  font-size: 25px !important;
 
   font-family: "Poppins", serif;
   font-weight: 300;
