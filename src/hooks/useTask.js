@@ -11,9 +11,7 @@ const useTask = () => {
     }, []); 
 
     useEffect(()=> {
-        if (tasks.length > 0){
-            localStorage.setItem("tasks", JSON.stringify(tasks));
-        }
+        localStorage.setItem("tasks", JSON.stringify(tasks));
     }, [tasks]);
 
     const addTask = (title, description = "") => {
