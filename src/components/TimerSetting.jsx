@@ -64,6 +64,17 @@ const TimerSettings = ({
                   step={1}
                   onChange={handleWorkSliderChange}
                   aria-labelledby="work-slider"
+                  sx={{
+                    '& .MuiSlider-track': {
+                      backgroundColor: "#000000",// ✅ Gradient effect
+                    },
+                    '& .MuiSlider-thumb': {
+                      backgroundColor: "#000000",
+                    },
+                    '& .MuiSlider-rail': {
+                      backgroundColor: "#ccc",
+                    },
+                  }}
                 />
               </Grid>
               <Grid item>
@@ -73,6 +84,7 @@ const TimerSettings = ({
                     fontFamily: "sans-serif",
                     width: "60px",  // Adjust width if needed
                     padding: "5px 10px", // ✅ Ensure enough padding inside
+                    
                   }}
                   value={workDuration}
                   size="medium"
@@ -106,6 +118,17 @@ const TimerSettings = ({
                   step={1}
                   onChange={handleBreakSliderChange}
                   aria-labelledby="break-slider"
+                  sx={{
+                    '& .MuiSlider-track': {
+                      backgroundColor: "#000000",// ✅ Gradient effect
+                    },
+                    '& .MuiSlider-thumb': {
+                      backgroundColor: "#000000",
+                    },
+                    '& .MuiSlider-rail': {
+                      backgroundColor: "#ccc",
+                    },
+                  }}
                 />
               </Grid>
               <Grid item>
