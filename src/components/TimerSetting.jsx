@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Box, Grid, Typography, Slider, Input } from "@mui/material";
+import { Box, Grid, Typography, Slider, Input, FormControlLabel } from "@mui/material";
+import Checkbox from '@mui/material/Checkbox';
 
 import "./TimerSetting.css";
 
@@ -31,6 +32,12 @@ const TimerSettings = ({
     setBreakDuration(event.target.value === "" ? 1 : Number(event.target.value));
   };
 
+  const handleChange = (event) => {
+    setSoundSetting(event.target.checked);
+  };
+
+  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (workDuration > 0) onTimeChange(workDuration);
@@ -40,6 +47,18 @@ const TimerSettings = ({
     setSoundOn(soundSetting);
     onClose();
   };
+
+  const colorOptions = [
+    "#1E1E1E", // Black
+    "#FFFFFF", // White
+    "#FF5733", // Red
+    "#FFC300", // Yellow
+    "#36D1DC", // Cyan Blue
+    "#8E44AD", // Purple
+    "#27AE60", // Green
+    "#E67E22", // Orange
+    "#2C3E50", // Dark Blue
+  ];
 
   return (
     <div className="modal-overlay">
@@ -53,7 +72,7 @@ const TimerSettings = ({
           gutterBottom 
           sx={{ fontSize: "12px", fontWeight: "normal", fontFamily: "Poppins, sans-serif" }}
           >
-          Work Duration (min)
+          Work
           </Typography>
             <Grid container spacing={2} alignItems="center">
               <Grid item xs>
@@ -100,14 +119,30 @@ const TimerSettings = ({
               </Grid>
             </Grid>
           </Box>
-
+            
+          <Box sx={{ display: "flex", gap: "10px", flexWrap: "wrap" , marginTop: 2 }}>
+            {colorOptions.map((color) => (
+              <Box
+                key={color}
+                sx={{
+                  width: 30,
+                  height: 30,
+                  backgroundColor: color,
+                  borderRadius: "50%",
+                  cursor: "pointer",
+                  border: workBgColor === color ? "1px solid black" : "1px solid gray",
+                }}
+                onClick={() => setWorkBgColor(color)}
+              />
+            ))}
+          </Box>
           {/* Break Duration Slider */}
           <Box sx={{ width: 350, marginTop: 2 }}>
           <Typography 
           gutterBottom 
-          sx={{ fontSize: "12px", fontWeight: "normal", fontFamily: "Poppins, sans-serif" }}
+          sx={{ fontSize: "12px", fontWeight: "normal", fontFamily: "Poppins, sans-serif"  }}
           >
-          Break Duration (min)
+         Break
           </Typography>
             <Grid container spacing={2} alignItems="center">
               <Grid item xs>
@@ -154,27 +189,54 @@ const TimerSettings = ({
             </Grid>
           </Box>
 
-          {/* Work Mode Background */}
-          <label>
-            Work Mode Background:
-            <input type="color" value={workBgColor} onChange={(e) => setWorkBgColor(e.target.value)} />
-          </label>
+          <Box sx={{ display: "flex", gap: "10px", flexWrap: "wrap" ,  marginTop: 2}}>
+          {colorOptions.map((color) => (
+            <Box
+              key={color}
+              sx={{
+                width: 30,
+                height: 30,
+                backgroundColor: color,
+                borderRadius: "50%",
+                cursor: "pointer",
+                border: breakBgColor === color ? "1px solid black" : "1px solid gray",
+              }}
+              onClick={() => setBreakBgColor(color)}
+            />
+          ))}
 
-          {/* Break Mode Background */}
-          <label>
-            Break Mode Background:
-            <input type="color" value={breakBgColor} onChange={(e) => setBreakBgColor(e.target.value)} />
-          </label>
-
+        </Box>
           {/* Sound Toggle */}
-          <label>
-            Sound Enabled:
-            <input type="checkbox" checked={soundSetting} onChange={(e) => setSoundSetting(e.target.checked)} />
-          </label>
 
-          <div className="modal-buttons">
-            <button type="submit" className="save-btn">Save</button>
-            <button type="button" className="cancel-btn" onClick={onClose}>Cancel</button>
+            <FormControlLabel
+            sx={{ marginTop: "10px" }}
+              control={
+                <Checkbox
+                  checked={soundSetting}
+                  onChange={handleChange}
+                  inputProps={{ "aria-label": "controlled" }}
+                />
+              }
+              label={
+                <Typography
+                  sx={{
+                    fontSize: "12px",
+                    fontWeight: "normal",
+                    fontFamily: "Poppins, sans-serif",
+                  }}
+                >
+                  Sound Enabled
+                </Typography>
+              }
+            />
+
+            <div className="buttons-container">
+            <button className="save-btn button-17 save" type="submit">
+              Save
+            </button>
+            <button className="cancel-btn button-17 cancel" onClick={onClose}>
+              Cancel
+            </button>
           </div>
         </form>
       </div>
