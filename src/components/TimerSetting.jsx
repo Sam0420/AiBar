@@ -49,7 +49,12 @@ const TimerSettings = ({
           
           {/* Work Duration Slider */}
           <Box sx={{ width: 350 }}>
-            <Typography gutterBottom>Work Duration (min)</Typography>
+          <Typography 
+          gutterBottom 
+          sx={{ fontSize: "12px", fontWeight: "normal", fontFamily: "Poppins, sans-serif" }}
+          >
+          Work Duration (min)
+          </Typography>
             <Grid container spacing={2} alignItems="center">
               <Grid item xs>
                 <Slider
@@ -63,8 +68,14 @@ const TimerSettings = ({
               </Grid>
               <Grid item>
                 <Input
+                  sx={{
+                    fontSize: "13px",
+                    fontFamily: "sans-serif",
+                    width: "60px",  // Adjust width if needed
+                    padding: "5px 10px", // ✅ Ensure enough padding inside
+                  }}
                   value={workDuration}
-                  size="small"
+                  size="medium"
                   onChange={handleWorkInputChange}
                   inputProps={{
                     step: 1,
@@ -80,7 +91,12 @@ const TimerSettings = ({
 
           {/* Break Duration Slider */}
           <Box sx={{ width: 350, marginTop: 2 }}>
-            <Typography gutterBottom>Break Duration (min)</Typography>
+          <Typography 
+          gutterBottom 
+          sx={{ fontSize: "12px", fontWeight: "normal", fontFamily: "Poppins, sans-serif" }}
+          >
+          Break Duration (min)
+          </Typography>
             <Grid container spacing={2} alignItems="center">
               <Grid item xs>
                 <Slider
@@ -94,6 +110,12 @@ const TimerSettings = ({
               </Grid>
               <Grid item>
                 <Input
+                  sx={{
+                    fontSize: "13px",
+                    fontFamily: "sans-serif",
+                    width: "60px",  // Adjust width if needed
+                    padding: "5px 10px", // ✅ Ensure enough padding inside
+                  }}
                   value={breakDuration}
                   size="small"
                   onChange={handleBreakInputChange}
