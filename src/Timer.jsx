@@ -100,18 +100,17 @@ const Timer = () => {
       
       <div className="app-container">
       
-      {/* HEADER */}
-      <header className="header">
-        <p className="title">AiBar</p>
-
-        {/* Right-side Buttons */}
-        <div className="header-buttons">
-          <SettingsButton
-            onClick={() => setIsSettingsOpen((prev) => !prev)}
-            isOpen={isSettingsOpen}
-          />
+        <nav className="navbar">
+          <div className="navbar-inner">
+            <p className="title">AiBar</p>
+            <div className="header-buttons">
+              <SettingsButton
+              onClick={() => setIsSettingsOpen((prev) => !prev)}
+              isOpen={isSettingsOpen}
+            />
+          </div>
         </div>
-      </header>
+      </nav>
       
       {/* MAIN CONTENT */}
       <main className="main-content">

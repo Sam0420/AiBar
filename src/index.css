@@ -12,20 +12,23 @@
   display: flex;
   flex-direction: column;
 }
-
-/* HEADER STYLES */
-.header {
-  display: flex;
-  justify-content: space-between; /* Push title left & buttons right */
-  align-items: center;
-  padding: 20px 500px; /* Adjust spacing */
-  position: fixed; /* Keep header fixed at the top */
+.navbar {
+  position: fixed;
   width: 100%;
   top: 0;
   left: 0;
+  background-color: inherit;
   z-index: 100;
 }
 
+.navbar-inner {
+  max-width: 1200px;      /* Limits content width */
+  margin: 0 auto;         /* Centers the inner container */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0.5rem;    /* Adjust the horizontal padding here */
+}
 .f3{
   font-size: 20px !important;
 
@@ -58,3 +61,5 @@
   font-weight: normal;
   font-family: "Poppins", serif;
 } 
+
+/* */
