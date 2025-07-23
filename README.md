@@ -1,12 +1,80 @@
-# React + Vite
+# 🧠 AiBar
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to **AiBar**, a sleek and minimal productivity web app built with **React + Vite**.  
+This was my personal take on creating a **Pomodoro timer** integrated with a lightweight **task manager**, wrapped in a clean interface and focused on simplicity and flow.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- ⏱️ **Customizable Pomodoro Timer**  
+  Stay focused with classic Pomodoro cycles — work, break, repeat.
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- ✅ **Task Management**  
+  Quickly add, complete, or delete tasks as you move through your day.
+
+- 🎯 **Focus-Oriented UI**  
+  Clean design with zero distractions — just you and your goals.
+
+- ⚡ **React + Vite Setup**  
+  Fast development experience with hot module replacement and lightning-fast builds.
+
+---
+
+## 📸 Preview
+
+![AIbar Preview](preview.png)
+
+> *(Replace `preview.png` with your actual screenshot or screen recording)*
+
+---
+
+## 🛠️ Tech Stack
+
+- React
+- Vite
+- CSS Modules
+---
+
+## 📁 Installation
+
+```bash
+git clone https://github.com/Sam0420/AiBar.git
+cd AiBar
+npm install
+npm run dev
+```
+
+---
+
+## 🌱 Inspiration
+
+I wanted to challenge myself to build a tool I would actually use:  
+Simple enough to **stay out of the way**, but effective enough to **keep me focused** and **organized**.
+
+---
+
+## ✨ What I Learned
+
+- Using React Hooks for timer and task state
+- Managing UI logic with clean component structure
+- Styling and layout in a productivity-focused UI
+- Setting up a modern, fast development environment with Vite
+
+---
+
+## 🔮 Future Ideas
+
+- Session history and streaks
+
+---
+
+## 📬 Feedback
+
+Feel free to open an issue or reach out with ideas!
+
+---
+
+## 📄 License
+
+MIT – free to use, modify, and share.
