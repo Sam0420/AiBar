@@ -21,14 +21,6 @@ This was my personal take on creating a **Pomodoro timer** integrated with a lig
 
 ---
 
-## 📸 Preview
-
-![AIbar Preview](preview.png)
-
-> *(Replace `preview.png` with your actual screenshot or screen recording)*
-
----
-
 ## 🛠️ Tech Stack
 
 - React
